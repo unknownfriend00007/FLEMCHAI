@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 2840b5e1832862c9f34d135af14ee44587f7bc20 RAGHVENDRA P. SINGH <41947832-wwwrps9451@users.noreply.replit.com> 1758495537 +0000	branch: Created from origin/main
+2840b5e1832862c9f34d135af14ee44587f7bc20 2840b5e1832862c9f34d135af14ee44587f7bc20 RAGHVENDRA P. SINGH <41947832-wwwrps9451@users.noreply.replit.com> 1758495537 +0000	checkout: moving from main to main
+2840b5e1832862c9f34d135af14ee44587f7bc20 8255f159b1dd494d8c43a0cff46eda4ab8c25d7e wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758495755 +0000	commit: Update web component to handle attribute updates more effectively
+8255f159b1dd494d8c43a0cff46eda4ab8c25d7e e3abbf4f05929d6d5c6b83657a83728f42fce7ed wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758495836 +0000	commit: Configure frontend to run on port 5000 with all host access
+e3abbf4f05929d6d5c6b83657a83728f42fce7ed 3777857b275d86fd6bcab7ef2d714407fc8299e4 wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758495977 +0000	commit: Update script to correctly define component properties and attributes
+3777857b275d86fd6bcab7ef2d714407fc8299e4 c5c2b14431940661cca69ddbbd8c3489f76b0898 wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758496074 +0000	commit: Update demo page to guide users through Replit setup
+c5c2b14431940661cca69ddbbd8c3489f76b0898 989ae8e6703ce782d1a1469b12e63b76baf20248 wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758496157 +0000	commit: Update frontend configuration to allow all hosts for proxy
+989ae8e6703ce782d1a1469b12e63b76baf20248 1ba545af13981304efe3570642919e49689e9845 wwwrps9451 <41947832-wwwrps9451@users.noreply.replit.com> 1758496172 +0000	commit: Make the project run smoothly in the Replit environment
