@@ -1,0 +1,93 @@
+<!--
+  Flowise Chatbot Embed - Demo Page
+  
+  This page demonstrates the chatbot widget. To make it functional:
+  1. Configure your Flowise API credentials in Replit secrets
+  2. Add chatflow configurations
+  3. Start the proxy server (yarn start)
+  
+  See replit.md for detailed setup instructions.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowise Chatbot Widget - Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .setup-info {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .setup-info h2 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .setup-info code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        .widget-container {
+            min-height: 200px;
+            border: 2px dashed #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="setup-info">
+        <h2>🤖 Flowise Chatbot Widget</h2>
+        <p>This is a demo page for the Flowise chatbot embed. To see the chatbot working:</p>
+        <ol>
+            <li>Add your <code>API_HOST</code> and <code>FLOWISE_API_KEY</code> to Replit secrets</li>
+            <li>Configure chatflow identifiers (e.g., <code>demo</code>, <code>agent1</code>)</li>
+            <li>Start the proxy server: <code>yarn start</code></li>
+        </ol>
+        <p>See <code>replit.md</code> for detailed setup instructions.</p>
+    </div>
+
+    <div class="widget-container">
+        <div>Chatbot will appear here once configured</div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module">
+        import Chatbot from './web.js'
+        
+        // Initialize the chatbot widget
+        // This will attempt to connect to the proxy server
+        Chatbot.init({
+            chatflowid: 'demo',    // Change this to match your configured chatflow
+            apiHost: window.location.origin,
+            theme: {
+                chatWindow: {
+                    welcomeMessage: 'Hello! Configure your Flowise credentials to start chatting.',
+                    title: 'Demo Chatbot'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
