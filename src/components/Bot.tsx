@@ -28,7 +28,7 @@ import { Popup, DisclaimerPopup } from '@/features/popup';
 import { Avatar } from '@/components/avatars/Avatar';
 import { DeleteButton, SendButton } from '@/components/buttons/SendButton';
 import { FilePreview } from '@/components/inputs/textInput/components/FilePreview';
-import { CircleDotIcon, SparklesIcon, TrashIcon } from './icons';
+import { CircleDotIcon, SparklesIcon, TrashIcon, MoonIcon, SunIcon } from './icons';
 import { CancelButton } from './buttons/CancelButton';
 import { cancelAudioRecording, startAudioRecording, stopAudioRecording } from '@/utils/audioRecording';
 import { LeadCaptureBubble } from '@/components/bubbles/LeadCaptureBubble';
@@ -36,6 +36,7 @@ import { removeLocalStorageChatHistory, getLocalStorageChatflow, setLocalStorage
 import { cloneDeep } from 'lodash';
 import { FollowUpPromptBubble } from '@/components/bubbles/FollowUpPromptBubble';
 import { fetchEventSource, EventStreamContentType } from '@microsoft/fetch-event-source';
+import { Theme, getInitialTheme, setStoredTheme, applyTheme } from '@/utils/themeUtils';
 
 export type FileEvent<T = EventTarget> = {
   target: T;
@@ -485,6 +486,8 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
   const [leadEmail, setLeadEmail] = createSignal('');
   const [disclaimerPopupOpen, setDisclaimerPopupOpen] = createSignal(false);
 
+  const [theme, setTheme] = createSignal<Theme>(getInitialTheme());
+
   const [openFeedbackDialog, setOpenFeedbackDialog] = createSignal(false);
   const [feedback, setFeedback] = createSignal('');
   const [pendingActionData, setPendingActionData] = createSignal(null);
@@ -541,11 +544,24 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
         });
     }
 
+    if (botContainer) {
+      applyTheme(theme(), botContainer);
+    }
+
     if (!bottomSpacer) return;
     setTimeout(() => {
       chatContainer?.scrollTo(0, chatContainer.scrollHeight);
     }, 50);
   });
+
+  const toggleTheme = () => {
+    const newTheme = theme() === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    setStoredTheme(newTheme);
+    if (botContainer) {
+      applyTheme(newTheme, botContainer);
+    }
+  };
 
   const scrollToBottom = () => {
     setTimeout(() => {
@@ -1798,6 +1814,25 @@ export const Bot = (botProps: BotProps & { class?: string }) => {
                 <span class="px-3 whitespace-pre-wrap font-semibold max-w-full">{props.title}</span>
               </Show>
               <div style={{ flex: 1 }} />
+              <button
+                type="button"
+                onClick={toggleTheme}
+                class="my-2 ml-2 p-2 rounded-lg transition-all duration-200 hover:bg-white/20"
+                title={theme() === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  'align-items': 'center',
+                  'justify-content': 'center',
+                  color: props.bubbleTextColor || '#ffffff',
+                }}
+              >
+                <Show when={theme() === 'light'} fallback={<SunIcon style={{ width: '20px', height: '20px' }} />}>
+                  <MoonIcon style={{ width: '20px', height: '20px' }} />
+                </Show>
+              </button>
               <DeleteButton
                 sendButtonColor={props.bubbleTextColor}
                 type="button"
